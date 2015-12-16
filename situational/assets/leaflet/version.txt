@@ -1,3 +1,0 @@
-Leaflet v0.7.5
-http://cdn.leafletjs.com/downloads/leaflet-0.7.5.zip
-downloaded 08/09/2015
