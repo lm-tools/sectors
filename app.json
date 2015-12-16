@@ -1,5 +1,5 @@
 {
-  "name":"situational",
+  "name":"sectors",
   "scripts":{},
   "env":{
     "DEFAULT_FROM_EMAIL"     :{"required":false},
