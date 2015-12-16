@@ -13,7 +13,7 @@ class TestSectors(BaseCase):
             b.fill("sector_form-sector_0", "customer services")
             b.fill("sector_form-sector_1", "security")
             b.fill("sector_form-sector_2", "data entry")
-            b.find_by_text("Start").first.click()
+            b.find_by_text("Next").first.click()
 
             checkboxes = b.find_by_css('fieldset input[type=checkbox]')
             self.assertTrue(checkboxes)
