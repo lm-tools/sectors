@@ -8,7 +8,7 @@ from django.views.generic import FormView, View
 from formtools.wizard.views import NamedUrlCookieWizardView
 
 from . import models
-from home_page import forms as shared_forms
+from . import forms
 
 
 class SectorWizardView(NamedUrlCookieWizardView):
@@ -49,7 +49,7 @@ class SectorWizardView(NamedUrlCookieWizardView):
 
 class ReportView(FormView):
     template_name = "sectors/report.html"
-    form_class = shared_forms.EmailForm
+    form_class = forms.EmailForm
     success_url = "#success"
 
     def get(self, request, *args, **kwargs):
@@ -108,3 +108,17 @@ class PDFView(View):
         response = http.HttpResponse(report.to_pdf(), 'application/pdf')
         response['Content-Disposition'] = "filename=sectors-report.pdf"
         return response
+
+
+def server_error(request, template_name='500.html'):
+    initial_namespace = request.resolver_match.namespace
+    namespace, app_config = app_config_from_namespace(initial_namespace)
+    start_url = url_from_app_config(namespace, app_config)
+
+    context_instance = RequestContext(request)
+    context_instance['start_url'] = start_url
+
+    return render_to_response(
+        template_name,
+        context_instance=context_instance
+    )

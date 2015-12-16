@@ -1,36 +1,16 @@
-# Situational
+# Sectors
 
 ## Deploying
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/lm-tools/situational)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/lm-tools/sectors)
 
-You will need to scale the celery process to at least one dyno for the travel and sectors tools to work. 
+You will need to scale the celery process to at least one dyno for the travel and sectors tools to work.
 
 ### Environment variables
 
-#### All tools
-
 * DEFAULT_FROM_EMAIL
 * DJANGO_SECRET_KEY
-* HTTP_PASSWORD
-* HTTP_USERNAME
 * GOOGLE_ANALYTICS_ID
-
-#### Travel tool
-
-* AWS_ACCESS_KEY_ID
-* AWS_S3_HOST
-* AWS_SECRET_ACCESS_KEY
-* AWS_STORAGE_BUCKET_NAME
-* MAPUMENTAL_API_KEY
-* ENABLE_MAPUMENTAL
-
-#### Discovery tool
-
-To signup for Adzuna, go to: https://developer.adzuna.com/signup.
-
-* ADZUNA_APP_ID
-* ADZUNA_APP_KEY
 
 ## Running
 
