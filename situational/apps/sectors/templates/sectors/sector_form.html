@@ -3,9 +3,14 @@
 {% block content %}
 <h2 class="heading-xlarge">Jobs you can do</h2>
 
-<p class="lede">Enter the titles of some jobs you think you could do, or some of your skills, to see information about related jobs – such as average working hours, qualifications needed and what to search for online.</p>
+<p class="lede">This tool helps you to understand the skills and qualifications you’ll need for specific jobs and sectors.</p>
 
-<p>Generate a report to share with your work coach so they know how to help you.</p>
+<p>Enter the jobs and sectors you’re interested in and find out:</p>
+<ul>
+  <li>typical tasks and hours</li>
+  <li>skills and qualifications required</li>
+  <li>the words to use when searching online</li>
+</ul>
 
 <form method=post id="sector_form" autocomplete="OFF">
   {% csrf_token %}
