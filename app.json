@@ -7,7 +7,7 @@
     "DJANGO_SECRET_KEY"      :{"required":true},
     "DJANGO_SETTINGS_MODULE" :"situational.settings.heroku",
     "GOOGLE_ANALYTICS_ID"    :{"required": true},
-    "HTTPS"                  :"on",
+    "HTTPS"                  :"on"
   },
    "addons":[
     "heroku-postgresql:hobby-dev",
