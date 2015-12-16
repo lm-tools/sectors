@@ -6,4 +6,3 @@ class SectorsConfig(AppConfig):
     verbose_name = "Job roles"
     icon_url = 'images/icons/app-icon-red.png'
     start_url_name = "start"
-    manifest = True

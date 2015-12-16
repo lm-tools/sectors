@@ -86,3 +86,13 @@ class JobDescriptionsForm(BaseLMIForm):
                 code='invalid'
             )
         return cleaned_data
+
+
+class EmailForm(forms.Form):
+    email = forms.EmailField(
+        error_messages={
+            'required': 'Please provide an email address.',
+            'invalid': 'Please provide a valid email address.'
+        },
+        required=True, widget=forms.TextInput(attrs={"class": "form-control"})
+    )

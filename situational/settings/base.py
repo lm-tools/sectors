@@ -111,7 +111,6 @@ TEMPLATE_LOADERS = (
 
 MIDDLEWARE_CLASSES = (
     'log_request_id.middleware.RequestIDMiddleware',
-    'basicauth.basic_auth_middleware.BasicAuthMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -130,10 +129,10 @@ TEMPLATE_CONTEXT_PROCESSORS = [
     "django.template.context_processors.static",
     "django.template.context_processors.tz",
     "django.contrib.messages.context_processors.messages",
-    "home_page.context_processors.govuk_frontend_settings",
-    "home_page.context_processors.get_current_path",
-    "home_page.context_processors.get_current_namespace",
-    "home_page.context_processors.google_analytics"
+    "sectors.context_processors.govuk_frontend_settings",
+    "sectors.context_processors.get_current_path",
+    "sectors.context_processors.get_current_namespace",
+    "sectors.context_processors.google_analytics"
 ]
 
 ROOT_URLCONF = 'situational.urls'
@@ -158,16 +157,9 @@ INSTALLED_APPS = (
 )
 
 PROJECT_APPS = (
-    'basicauth',
-    'detailed_history.apps.DetailedHistoryConfig',
-    'home_page.apps.HomePageConfig',
-    'job_discovery.apps.JobDiscoveryConfig',
-    'quick_history.apps.QuickHistoryConfig',
     'sectors.apps.SectorsConfig',
     'templated_email',
     'template_to_pdf',
-    'travel_report.apps.TravelReportConfig',
-    'travel_times',
 )
 
 SESSION_ENGINE = 'django.contrib.sessions.backends.signed_cookies'
@@ -214,44 +206,14 @@ LOGGING = {
     },
 }
 
-ADZUNA_APP_ID = os.environ.get('ADZUNA_APP_ID')
-ADZUNA_APP_KEY = os.environ.get('ADZUNA_APP_KEY')
-
-# Bacic auth
-BASICAUTH_DISABLED = os.environ.get('BASICAUTH_DISABLED', False)
-if not BASICAUTH_DISABLED:
-    BASICAUTH_USERNAME = os.environ.get('HTTP_USERNAME')
-    BASICAUTH_PASSWORD = os.environ.get('HTTP_PASSWORD')
-BASICAUTH_EXEMPT = [
-    r"/manifest.json$",
-]
-
-
-# Manifest.json
-DEFAULT_APP_NAMESPACE = environ.get(
-    'DEFAULT_APP_NAMESPACE', 'home_page')
-
 # EMAILS
 DEFAULT_FROM_EMAIL = environ.get('DEFAULT_FROM_EMAIL', 'webmaster@localhost')
-
-# Jobs API
-JOBS_API_BASE_URL = environ.get('JOBS_API_BASE_URL',
-                                'https://lmt-jobs-api.herokuapp.com')
-
-# MAPUMENTAL
-MAPUMENTAL_API_KEY = environ.get('MAPUMENTAL_API_KEY')
 
 # GOOGLE ANALYTICS
 GOOGLE_ANALYTICS_ID = environ.get('GOOGLE_ANALYTICS_ID')
 
 BROKER_URL = environ.get('REDISTOGO_URL',
                          'redis://localhost:6379/0')
-
-from travel_times import mapumental
-if environ.get('ENABLE_MAPUMENTAL'):
-    MAPUMENTAL_CLIENT = mapumental.Client
-else:
-    MAPUMENTAL_CLIENT = mapumental.FakeClient
 
 # REDIS
 REDIS_URL = environ.get('REDIS_URL', 'redis://')
