@@ -8,8 +8,7 @@ from django.views.generic import FormView, View
 
 from formtools.wizard.views import NamedUrlCookieWizardView
 
-from . import models
-from . import forms
+from . import forms, helpers, models
 
 
 class SectorWizardView(NamedUrlCookieWizardView):
@@ -59,14 +58,22 @@ class ReportView(FormView):
             pk=int(kwargs['report_id'])
         )
 
-        if self.report.is_populated:
-            status_code = 200
-            self.template_name = "sectors/report.html"
-        else:
-            self.report.populate_async()
-            status_code = 202
-            self.template_name = "sectors/report_pending.html"
+        if not self.report.is_populated:
+            soc_codes_list = self.report.soc_codes.split(",")
+            lmi_client = helpers.LMIForAllClient()
+            soc_code_data = {}
+            for soc_code in soc_codes_list:
+                soc_code_int = int(soc_code)
+                soc_code_data[soc_code_int] = {
+                    'pay': lmi_client.pay(soc_code_int),
+                    'hours_worked': lmi_client.hours_worked(soc_code_int),
+                    'info': lmi_client.soc_code_info(soc_code_int)
+                }
+            self.report.soc_code_data = soc_code_data
+            self.report.save(update_fields=['soc_code_data'])
 
+        status_code = 200
+        self.template_name = "sectors/report.html"
         response = super().get(request, *args, **kwargs)
         response.status_code = status_code
 

@@ -21,12 +21,6 @@ class TestSectors(BaseCase):
                 cb._control.value = ['checked']
             b.find_by_text("Next").first.click()
 
-            self.assertTrue(
-                b.is_text_present(
-                    "Please wait while we generate your report...")
-            )
-            b.reload()
-
             self.assertEqual(
                 len(set([cb.name for cb in checkboxes])),
                 len(b.find_by_css(".job_item")))
