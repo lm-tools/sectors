@@ -1,5 +1,5 @@
 from django.conf.urls import url
-
+from django.views.generic import TemplateView
 from . import views
 from .forms import SectorForm, JobDescriptionsForm
 
@@ -17,6 +17,9 @@ report_id = "(?P<report_id>\d+)"
 
 urlpatterns = [
     url(r'^$', sector_wizard, name='start'),
+    url(r'^cookies$',
+        TemplateView.as_view(template_name='cookies.html'),
+        name='cookies'),
     url(r'(?P<step>.+)/$', sector_wizard, name='wizard_step'),
     url(r'soc_codes/' + report_id + '$',
         views.ReportView.as_view(),
