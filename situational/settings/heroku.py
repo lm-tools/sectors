@@ -31,12 +31,6 @@ import dj_database_url
 DATABASES['default'] = dj_database_url.config()
 DATABASES['default']['ENGINE'] = 'django_postgrespool'
 
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
-AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']
-AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
-AWS_STORAGE_BUCKET_NAME = os.environ['AWS_STORAGE_BUCKET_NAME']
-AWS_S3_HOST = os.environ['AWS_S3_HOST']
-
 REDIS_URL = os.environ['REDISCLOUD_URL']
 
 EMAIL_HOST = os.environ['MAILGUN_SMTP_SERVER']

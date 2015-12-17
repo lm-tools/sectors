@@ -25,23 +25,6 @@ class TestShowView(BaseCase):
             self.assertEqual(response.status_code, 200)
             self.assertTemplateUsed(response, "sectors/report.html")
 
-    def test_get_with_unpopulated_report(self):
-        report = models.SectorsReport.objects.create(soc_codes='3114,5330')
-        with patch('sectors.models.SectorsReport.is_populated',
-                   new_callable=PropertyMock) as mock_is_populated:
-            mock_is_populated.return_value = False
-
-            response = self.client.get(
-                reverse(
-                    'sectors:report',
-                    kwargs={
-                        'report_id': report.pk
-                    }
-                )
-            )
-            self.assertEqual(response.status_code, 202)
-            self.assertTemplateUsed(response, "sectors/report_pending.html")
-
 
 class TestSendReport(BaseCase):
     def test_post(self):

@@ -2,9 +2,9 @@ from django.db import models
 
 from jsonfield import JSONField
 from model_utils.models import TimeStampedModel
+from templated_email import send_templated_email
 
 import template_to_pdf
-from sectors import tasks
 
 
 class SectorsReport(TimeStampedModel):
@@ -21,10 +21,18 @@ class SectorsReport(TimeStampedModel):
         return template.render({'report': self})
 
     def send_to(self, email):
-        tasks.send_report.delay(self, email)
-
-    def populate_async(self):
-        tasks.populate_report.delay(self)
+        subject = "What sort of jobs you could do"
+        send_templated_email(
+            template_name="sectors/emails/sectors_report",
+            context={"report": self},
+            to=[email],
+            subject=subject,
+            attachments=[
+                ("sectors-report.pdf",
+                 self.to_pdf(),
+                 "application/pdf"),
+            ],
+        )
 
     @property
     def is_populated(self):

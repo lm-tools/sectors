@@ -7,6 +7,7 @@
     {% endfor %}
   </div>
 {% endif %}
+<p class="heading-small email-help">Email yourself this information so you can refer to it in the future:</p>
 <form action="{{form_action}}#email_form" onsubmit="trackSendReportEmail('{{ namespace }}')" method="post" autocomplete="OFF">
   {% csrf_token %}
   <fieldset class="form-fieldset">

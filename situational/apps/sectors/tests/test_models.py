@@ -34,15 +34,6 @@ class SectorsReportBuilderMixin():
         return SectorsReport(**populated_fields)
 
 
-class TestSectorsReportModel(BaseCase):
-    def test_population(self):
-        r = SectorsReport(soc_codes='3114,5330')
-        r.save()
-        r.populate_async()  # celery runs tasks synchronously for tests
-        r.refresh_from_db()
-        self.assertTrue(r.is_populated)
-
-
 class TestSectorsReportIsPopulated(SectorsReportBuilderMixin, BaseCase):
     def test_new_reports_are_considered_unpopulated(self):
         self.assertFalse(SectorsReport().is_populated)
