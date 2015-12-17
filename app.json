@@ -12,8 +12,7 @@
    "addons":[
     "heroku-postgresql:hobby-dev",
     "logentries:le_tryit",
-    "mailgun:starter",
-    "rediscloud:30"
+    "mailgun:starter"
   ],
   "buildpacks": [
     {

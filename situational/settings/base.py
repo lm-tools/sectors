@@ -212,12 +212,6 @@ DEFAULT_FROM_EMAIL = environ.get('DEFAULT_FROM_EMAIL', 'webmaster@localhost')
 # GOOGLE ANALYTICS
 GOOGLE_ANALYTICS_ID = environ.get('GOOGLE_ANALYTICS_ID')
 
-BROKER_URL = environ.get('REDISTOGO_URL',
-                         'redis://localhost:6379/0')
-
-# REDIS
-REDIS_URL = environ.get('REDIS_URL', 'redis://')
-
 # REPORT POPULATION
 REPORT_POPULATION_TIMEOUT = int(
     environ.get('REPORT_POPULATION_TIMEOUT', 300000)
