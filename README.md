@@ -4,8 +4,6 @@
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/lm-tools/sectors)
 
-You will need to scale the celery process to at least one dyno for the travel and sectors tools to work.
-
 ### Environment variables
 
 * DEFAULT_FROM_EMAIL
@@ -14,7 +12,7 @@ You will need to scale the celery process to at least one dyno for the travel an
 
 ## Running
 
-Depends on Python >= 3.4, Sass 3.2.19, Redis >= 3.0
+Depends on Python >= 3.4, Sass 3.2.19
 
 Install python dependancies for your environment (local, production, etc):
 
@@ -23,10 +21,6 @@ Install python dependancies for your environment (local, production, etc):
 Install asset pipeline dependancies:
 
 > bundle install
-
-For async task running, run a celery worker:
-
-> ./manage.py celery -A situational worker -l debug
 
 To run the dev server
 
