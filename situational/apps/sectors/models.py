@@ -1,8 +1,10 @@
 from django.db import models
+from django.core.mail import send_mail
+from django.template import Context
+from django.template.loader import get_template
 
 from jsonfield import JSONField
 from model_utils.models import TimeStampedModel
-from templated_email import send_templated_email
 
 import template_to_pdf
 
@@ -22,16 +24,13 @@ class SectorsReport(TimeStampedModel):
 
     def send_to(self, email):
         subject = "What sort of jobs you could do"
-        send_templated_email(
-            template_name="sectors/emails/sectors_report",
-            context={"report": self},
-            to=[email],
-            subject=subject,
-            attachments=[
-                ("sectors-report.pdf",
-                 self.to_pdf(),
-                 "application/pdf"),
-            ],
+        send_mail(
+            subject,
+            get_template("sectors/email.html").render(
+                Context({"report": self})
+            ),
+            'work-in-progress@lm-tools.com',
+            [email]
         )
 
     @property
