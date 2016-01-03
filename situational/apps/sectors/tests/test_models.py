@@ -55,4 +55,4 @@ class TestSectorsReportSendTo(SectorsReportBuilderMixin, BaseCase):
         message = mail.outbox[0]
 
         self.assertIn('test-address@example.org', message.to)
-        self.assertIn("Here is your report.", message.body)
+        self.assertIn("Jobs you can do", message.body)
