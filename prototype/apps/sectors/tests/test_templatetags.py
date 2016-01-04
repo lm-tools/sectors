@@ -1,4 +1,4 @@
-from situational.testing import BaseCase
+from prototype.testing import BaseCase
 
 from ..templatetags import friendly_socs
 

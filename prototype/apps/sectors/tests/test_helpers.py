@@ -1,4 +1,4 @@
-from situational.testing import BaseCase
+from prototype.testing import BaseCase
 
 from sectors.helpers import LMIForAllClient, LMIForAllException
 

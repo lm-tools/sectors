@@ -30,7 +30,7 @@ MANAGERS = ADMINS
 DATABASES = {
     'default': {
         'ENGINE': 'django_postgrespool',
-        'NAME': 'situational',
+        'NAME': 'prototype',
         'USER': 'postgres',
         'PASSWORD': '',
         'HOST': '',
@@ -135,10 +135,10 @@ TEMPLATE_CONTEXT_PROCESSORS = [
     "sectors.context_processors.google_analytics"
 ]
 
-ROOT_URLCONF = 'situational.urls'
+ROOT_URLCONF = 'prototype.urls'
 
 # Python dotted path to the WSGI application used by Django's runserver.
-WSGI_APPLICATION = 'situational.wsgi.application'
+WSGI_APPLICATION = 'prototype.wsgi.application'
 
 TEMPLATE_DIRS = (
     root('templates'),

@@ -5,7 +5,7 @@
     "DEFAULT_FROM_EMAIL"     :{"required":false},
     "DISABLE_COLLECTSTATIC"  :"1",
     "DJANGO_SECRET_KEY"      :{"required":true},
-    "DJANGO_SETTINGS_MODULE" :"situational.settings.heroku",
+    "DJANGO_SETTINGS_MODULE" :"prototype.settings.heroku",
     "GOOGLE_ANALYTICS_ID"    :{"required": true},
     "HTTPS"                  :"on"
   },

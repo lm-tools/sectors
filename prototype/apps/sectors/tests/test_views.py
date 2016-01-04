@@ -3,7 +3,7 @@ from unittest.mock import patch, PropertyMock
 from django.core.urlresolvers import reverse
 
 from sectors import models
-from situational.testing import BaseCase
+from prototype.testing import BaseCase
 
 
 class TestShowView(BaseCase):

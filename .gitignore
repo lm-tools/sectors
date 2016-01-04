@@ -54,14 +54,14 @@ venv
 *.iml
 *.iws
 
-situational/settings/local.py
-situational/settings/production.py
+prototype/settings/local.py
+prototype/settings/production.py
 
 # collect static output directory
-situational/static/
+prototype/static/
 
 # media uploads
-situational/uploads
+prototype/uploads
 
 .DS_Store
 
@@ -69,5 +69,5 @@ situational/uploads
 node_modules/
 
 # bower packages
-situational/assets-src/vendor/
+prototype/assets-src/vendor/
 .sass-cache/

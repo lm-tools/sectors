@@ -37,7 +37,7 @@ Or use `foreman` to run as heroku would:
 To speed asset compilation up locally, replace sass with [sassc](https://github.com/sass/sassc) as follows:
 
 1. install sassc (`brew install sassc`)
-2. add the following to `situational/settings/local.py`:
+2. add the following to `prototype/settings/local.py`:
 
 ```python
 STATIC_PRECOMPILER_COMPILERS = (
