@@ -1,7 +1,7 @@
 from django.core import mail
 
 from sectors.models import SectorsReport
-from situational.testing import BaseCase
+from prototype.testing import BaseCase
 
 
 class SectorsReportBuilderMixin():

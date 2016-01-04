@@ -21,7 +21,7 @@ SITE_ROOT = dirname(dirname(abspath(__file__)))
 path.append(SITE_ROOT)
 
 
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "situational.settings")
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "prototype.settings")
 
 from whitenoise.django import DjangoWhiteNoise
 

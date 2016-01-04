@@ -3,7 +3,7 @@ from django.core import mail
 
 from splinter import Browser
 
-from situational.testing import BaseCase
+from prototype.testing import BaseCase
 
 
 class TestSectors(BaseCase):

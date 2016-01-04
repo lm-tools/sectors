@@ -1,2 +1,2 @@
-situational/testing/cassettes/**/*.yaml binary
-situational/assets/leaflet/**/* binary
+prototype/testing/cassettes/**/*.yaml binary
+prototype/assets/leaflet/**/* binary

@@ -5,7 +5,7 @@ from django.conf import settings
 from django.conf.urls import include, url
 from django.conf.urls.static import static
 
-handler500 = 'situational.apps.sectors.views.server_error'
+handler500 = 'prototype.apps.sectors.views.server_error'
 
 urlpatterns = [
     url(r'', include('sectors.urls', namespace='sectors')),
