@@ -23,15 +23,10 @@ class SectorsReport(TimeStampedModel):
     def send_to(self, email):
         subject = "What sort of jobs you could do"
         send_templated_email(
-            template_name="sectors/emails/sectors_report",
-            context={"report": self},
+            "sectors/email",
+            {"report": self},
             to=[email],
-            subject=subject,
-            attachments=[
-                ("sectors-report.pdf",
-                 self.to_pdf(),
-                 "application/pdf"),
-            ],
+            subject=subject
         )
 
     @property

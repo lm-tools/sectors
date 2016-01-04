@@ -1,5 +1,3 @@
-from unittest.mock import patch
-
 from django.core import mail
 
 from sectors.models import SectorsReport
@@ -49,19 +47,12 @@ class TestSectorsReportIsPopulated(SectorsReportBuilderMixin, BaseCase):
 
 
 class TestSectorsReportSendTo(SectorsReportBuilderMixin, BaseCase):
-    def test_send_pdf_to_eprovided_mail_address(self):
+    def test_send_report_to_provided_mail_address(self):
         report = self._populated_report()
-        with patch.object(report, 'to_pdf') as to_pdf_mock:
-            to_pdf_mock.return_value = 'mock pdf content'
-            report.send_to('test-address@example.org')
+        report.send_to('test-address@example.org')
 
         self.assertEqual(len(mail.outbox), 1)  # sanity check
         message = mail.outbox[0]
 
         self.assertIn('test-address@example.org', message.to)
-        self.assertEqual(len(message.attachments), 1)
-        self.assertIn("Your report is attached to this email.", message.body)
-        self.assertIn("Your report is attached to this email.",
-                      message.alternatives[0][0])
-        self.assertEqual(message.attachments[0][1], 'mock pdf content')
-        self.assertEqual(message.attachments[0][2], 'application/pdf')
+        self.assertIn("Jobs you can do", message.body)

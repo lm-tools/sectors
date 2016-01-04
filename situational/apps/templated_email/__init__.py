@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.core.mail import EmailMultiAlternatives
 from django.template import loader
 
@@ -8,6 +9,7 @@ def send_templated_email(template_name=None, context=None, **kwargs):
 
     message = EmailMultiAlternatives(
         body=plain_text_template.render(context),
+        from_email=settings.DEFAULT_FROM_EMAIL,
         **kwargs
     )
     message.attach_alternative(
