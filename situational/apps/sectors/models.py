@@ -1,10 +1,8 @@
-from django.conf import settings
-from django.core.mail import EmailMultiAlternatives
 from django.db import models
-from django.template.loader import get_template
 
 from jsonfield import JSONField
 from model_utils.models import TimeStampedModel
+from templated_email import send_templated_email
 
 import template_to_pdf
 
@@ -23,18 +21,13 @@ class SectorsReport(TimeStampedModel):
         return template.render({'report': self})
 
     def send_to(self, email):
-        template_html = 'sectors/email.html'
-        template_text = 'sectors/email.txt'
-        exp = settings.DEFAULT_FROM_EMAIL,
-        subject = 'What sort of jobs you could do'
-        text = get_template(template_text)
-        html = get_template(template_html)
-        email_content = {"report": self}
-        text_content = text.render(email_content)
-        html_content = html.render(email_content)
-        msg = EmailMultiAlternatives(subject, text_content, exp, [email])
-        msg.attach_alternative(html_content, "text/html")
-        msg.send()
+        subject = "What sort of jobs you could do"
+        send_templated_email(
+            "sectors/email",
+            {"report": self},
+            to=[email],
+            subject=subject
+        )
 
     @property
     def is_populated(self):
