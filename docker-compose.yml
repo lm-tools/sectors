@@ -1,15 +1,3 @@
-web:
-  restart: always
-  build: ./web
-  expose:
-    - "8000"
-  links:
-    - postgres:postgres
-  volumes:
-    - /usr/src/app/static
-  env_file: .env
-  command: /usr/local/bin/gunicorn prototype.wsgi:application -w 2 -b :8000
-
 nginx:
   restart: always
   build: ./nginx/
@@ -21,6 +9,18 @@ nginx:
     - web
   links:
     - web:web
+
+web:
+  restart: always
+  build: ./web
+  expose:
+    - "8000"
+  links:
+    - postgres:postgres
+  volumes:
+    - /usr/src/app/prototype/static
+  env_file: .env
+  command: /usr/local/bin/gunicorn prototype.wsgi:application -w 2 -b :8000
 
 postgres:
   restart: always
