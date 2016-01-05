@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+set -eo pipefail
+
+export GEM_PATH=/app/vendor/bundle/ruby/$(ls /app/vendor/bundle/ruby | head -1)
+
+./build.sh

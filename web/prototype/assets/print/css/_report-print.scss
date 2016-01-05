@@ -1,0 +1,28 @@
+footer {
+  text-align: center;
+}
+
+body.has-report {
+  background: #FFFFFF;
+}
+
+.report {
+  margin-left: -30px;
+  margin-right: -30px;
+
+  > header {
+    margin-top: 1%;
+  }
+
+  section {
+    margin-bottom: 1%;
+    header {
+      padding-top: 1%;
+      margin-top: 0;
+    }
+  }
+
+  .panel {
+    page-break-inside: avoid;
+  }
+}
