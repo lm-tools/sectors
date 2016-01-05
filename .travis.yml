@@ -9,9 +9,9 @@ before_install:
   - echo $PWD/.prince | ./.downloads/prince-10r3-linux-generic-x86_64/install.sh
   - export PATH=$PWD/.prince/bin:$PATH
   - prince --version
-  - bundle install
+  - cd web; bundle install
   - pip install --upgrade pip
-  - psql -c 'create database prototype;' -U postgres
+  - psql -c 'create database sectors;' -U postgres
 install: pip install -r requirements/local.txt --download-cache $HOME/.pip-cache --upgrade
 script:
   - ./build.sh
