@@ -1,6 +1,7 @@
 from operator import itemgetter
 
 import requests
+import string
 
 from django.conf import settings
 
@@ -37,7 +38,7 @@ class LMIForAllClient(object):
             if ',' in title:
                 a, b = title.split(',', 1)
                 title = " ".join((b, a))
-            title = title.strip().title()
+            title = string.capwords(title.strip())
             clean_titles.append(title)
         return list(set(clean_titles))
 
