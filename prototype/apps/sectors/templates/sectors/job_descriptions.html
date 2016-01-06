@@ -4,13 +4,13 @@
 
 {% block content %}
 
-  <h2 class="heading-large">Jobs you can do
+  <h2 class="heading-large">Results
     <span class="heading-medium">
-      (<a href="{% url 'sectors:wizard_step' step='sector_form' %}">Change search</a>)
+      <a href="{% url 'sectors:wizard_step' step='sector_form' %}">Change search</a>
     </span>
   </h2>
 
-  <p class="lede">Select the jobs you want to know more about.</p>
+  <p class="lede">These are some job roles related to your search.</p>
 
   <form id="results" method=post autocomplete="OFF">
     {% if form.errors %}

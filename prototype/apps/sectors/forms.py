@@ -83,7 +83,7 @@ class JobDescriptionsForm(BaseLMIForm):
         cleaned_data = super().clean()
         if not any(cleaned_data.values()):
             raise forms.ValidationError(
-                "Please select at least one job title",
+                "Please select at least 1 job.",
                 code='invalid'
             )
         return cleaned_data
