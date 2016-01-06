@@ -43,9 +43,11 @@ class SectorForm(NoColonForm):
 
     sector = MultiCharField(
         count=SECTOR_INPUT_COUNT,
-        label="Jobs you’re interested in",
+        label="Work, skills and interests",
         require_all_fields=False,
-        error_messages={'required': 'Enter at least one job role', },
+        error_messages={
+            'required': 'Please enter at least 1 job or sector.',
+        },
     )
 
 
