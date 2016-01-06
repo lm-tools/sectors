@@ -21,7 +21,7 @@ class SectorsReport(TimeStampedModel):
         return template.render({'report': self})
 
     def send_to(self, email):
-        subject = "What sort of jobs you could do"
+        subject = "Work you could do"
         send_templated_email(
             "sectors/email",
             {"report": self},
