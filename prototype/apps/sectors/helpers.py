@@ -25,7 +25,7 @@ class LMIForAllClient(object):
         req_json = req.json()
 
         if 'error' in req_json:
-            raise LMIForAllException(req_json()['error'])
+            raise LMIForAllException(req_json['error'])
 
         return req_json
 
