@@ -6,8 +6,10 @@
 {% block content %}
 
   <header>
-    <h2 class="heading-xlarge">More information on jobs</h2>
+    <h2 class="heading-xlarge">Work you could do</h2>
   </header>
+
+  <p class="lede">Use this information to search online, tailor your CV and plan your career.</p>
 
   {% url 'sectors:report' report_id=report.pk as form_action %}
   {% include '_email_form.html' with form_action=form_action %}
