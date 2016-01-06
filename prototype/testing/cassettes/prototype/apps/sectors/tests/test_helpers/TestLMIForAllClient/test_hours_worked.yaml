@@ -1,0 +1,19 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      User-Agent: [python-requests/2.7.0 CPython/3.4.3 Darwin/15.2.0]
+    method: GET
+    uri: http://api.lmiforall.org.uk/api/v1/ashe/estimateHours?coarse=true&soc=5432
+  response:
+    body: {string: '{"soc":54,"series":[{"year":2012,"hours":42},{"year":2013,"hours":43}]}'}
+    headers:
+      Connection: [keep-alive]
+      Content-Type: [application/json;charset=utf-8]
+      Date: ['Wed, 06 Jan 2016 15:05:11 GMT']
+      Server: [nginx/1.2.7]
+    status: {code: 200, message: OK}
+version: 1
