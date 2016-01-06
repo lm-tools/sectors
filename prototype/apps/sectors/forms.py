@@ -43,9 +43,11 @@ class SectorForm(NoColonForm):
 
     sector = MultiCharField(
         count=SECTOR_INPUT_COUNT,
-        label="Jobs you’re interested in",
+        label="Work, skills and interests",
         require_all_fields=False,
-        error_messages={'required': 'Enter at least one job role', },
+        error_messages={
+            'required': 'Please enter at least 1 job or sector.',
+        },
     )
 
 
@@ -81,7 +83,7 @@ class JobDescriptionsForm(BaseLMIForm):
         cleaned_data = super().clean()
         if not any(cleaned_data.values()):
             raise forms.ValidationError(
-                "Please select at least one job title",
+                "Please select at least 1 job.",
                 code='invalid'
             )
         return cleaned_data
