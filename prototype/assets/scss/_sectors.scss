@@ -15,3 +15,17 @@
 .email-help {
   padding-bottom:0.5em;
 }
+
+.change-right {
+  @include media(tablet) {
+    float: right;
+  }
+}
+
+.full-width {
+  width: 100%;
+}
+
+.job-description-title {
+  padding-bottom:1em;
+}
