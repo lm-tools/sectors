@@ -1,6 +1,6 @@
 # Sectors
 
-## Deploying
+## Deploying on Heroku
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/lm-tools/sectors)
 
@@ -10,7 +10,23 @@
 * DJANGO_SECRET_KEY
 * GOOGLE_ANALYTICS_ID
 
-## Running
+## Running on Docker containers
+
+- Install Docker on your local machine: see "How to install Docker" page on Confluence
+- Run the following commands:
+```
+cd ~/dev
+git clone https://github.com/lm-tools/sectors.git
+cd sectors
+eval "$(docker-machine env default)"
+docker-compose build
+docker-compose up -d
+docker exec -i -t sectors_web_1 /usr/src/app/build.sh
+```
+
+`docker-machine ip default` will return the IP at which the application is viewable. 
+
+## Running locally
 
 Depends on Python >= 3.4, Sass 3.2.19
 

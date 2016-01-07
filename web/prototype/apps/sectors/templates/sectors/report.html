@@ -1,0 +1,78 @@
+{% extends "sectors/base.html" %}
+{% load humanize %}
+{% load friendly_socs %}
+{% load staticfiles %}
+
+{% block content %}
+
+  <header>
+    <h2 class="heading-xlarge">Work you could do</h2>
+  </header>
+
+  <p class="lede">Use this information to search online, tailor your CV and plan your career.</p>
+
+  {% url 'sectors:report' report_id=report.pk as form_action %}
+  {% include '_email_form.html' with form_action=form_action %}
+
+  {% for soc_code,soc_data in report.soc_code_data.items %}
+
+    <section>
+      <div class="job_item">
+        <header>
+          <h2 class="heading-large">{{ soc_data.info.title|friendly_soc_title }}</h2>
+        </header>
+
+        <p>{{ soc_data.info.description|friendly_soc_description }}</p>
+
+        <div class="grid-row">
+          <div class="column-half">
+            <h3 class="heading-small">Typical pay and hours</h3 class="heading-small">
+            <ul>
+              <li>Normal hours worked per week: {{ soc_data.hours_worked }}</li>
+              <li>Estimated weekly pay: &pound;{{ soc_data.pay|intcomma }}</li>
+            </ul>
+          </div>
+
+          <div class="column-half">
+            <h3 class="heading-small">Typical qualifications required</h3 class="heading-small">
+            <p>{{ soc_data.info.qualifications }}</p>
+          </div>
+        </div>
+
+        <div class="grid-row">
+          <div class="column-half">
+            <h3 class="heading-small">Typical tasks</h3 class="heading-small">
+            <ul class="list-bullet">
+              {% for task in soc_data.info.tasks %}
+                <li>{{ task|capfirst }}</li>
+              {% endfor %}
+            </ul>
+          </div>
+
+          <div class="column-half">
+            <h3 class="heading-small">Useful search terms</h3 class="heading-small">
+              <em>{{ soc_data.info.add_titles|slice:":20"|join:", " }}</em>
+          </div>
+        </div>
+      </div>
+      <hr>
+    </section>
+
+  {% endfor %}
+
+  <footer>
+    <a href="{% url 'sectors:start' %}" class="link-back">start again</a>
+  </footer>
+{% endblock %}
+
+{% block javascript %}
+  {{ block.super }}
+  {% if not debug %}
+    <script src="{% static 'js/analytics/jquery.scrolldepth.min.js' %}"></script>
+    <script>
+      jQuery(function() {
+        jQuery.scrollDepth();
+      });
+    </script>
+  {% endif %}
+{% endblock %}

@@ -1,0 +1,28 @@
+{
+  "name":"sectors",
+  "scripts":{},
+  "env":{
+    "DEFAULT_FROM_EMAIL"     :{"required":false},
+    "DISABLE_COLLECTSTATIC"  :"1",
+    "DJANGO_SECRET_KEY"      :{"required":true},
+    "DJANGO_SETTINGS_MODULE" :"prototype.settings.heroku",
+    "GOOGLE_ANALYTICS_ID"    :{"required": true},
+    "HTTPS"                  :"on"
+  },
+   "addons":[
+    "heroku-postgresql:hobby-dev",
+    "logentries:le_tryit",
+    "mailgun:starter"
+  ],
+  "buildpacks": [
+    {
+      "url": "https://github.com/lm-tools/heroku-buildpack-princexml"
+    },
+    {
+      "url": "https://github.com/heroku/heroku-buildpack-ruby"
+    },
+    {
+      "url": "https://github.com/heroku/heroku-buildpack-python"
+    }
+  ]
+}

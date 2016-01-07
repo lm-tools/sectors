@@ -1,0 +1,58 @@
+{% load humanize %}
+<html>
+<head></head>
+<body>
+  <header>
+    <h1>Work you could do</h1>
+    <p>To help with your work search, use this information to find job adverts online, tailor your CV and plan your career.</p>
+    <p>Continue to explore work you could do by signing into your Universal Credit account and going to your to-do list.</p>
+    <p>If you didn’t request this information, please ignore this email.</p>
+  </header>
+
+  {% for soc_code,soc_data in report.soc_code_data.items %}
+
+    <section>
+      <div class="job_item">
+        <header>
+          <h2 class="heading-large">{{ soc_data.info.title }}</h2>
+        </header>
+
+        <p>{{ soc_data.info.description }}</p>
+
+        <div class="grid-row">
+          <div class="column-half">
+            <h3 class="heading-small">Typical pay and hours</h3 class="heading-small">
+            <ul>
+              <li>Normal hours worked per week: {{ soc_data.hours_worked }}</li>
+              <li>Estimated weekly pay: &pound;{{ soc_data.pay|intcomma }}</li>
+            </ul>
+          </div>
+
+          <div class="column-half">
+            <h3 class="heading-small">Typical qualifications required</h3 class="heading-small">
+            <p>{{ soc_data.info.qualifications }}</p>
+          </div>
+        </div>
+
+        <div class="grid-row">
+          <div class="column-half">
+            <h3 class="heading-small">Typical tasks</h3 class="heading-small">
+            <ul>
+              {% for task in soc_data.info.tasks %}
+                <li>{{ task|capfirst }}</li>
+              {% endfor %}
+            </ul>
+          </div>
+
+          <div class="column-half">
+            <h3 class="heading-small">Useful search terms</h3 class="heading-small">
+              <em>{{ soc_data.info.add_titles|slice:":20"|join:", " }}</em>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  {% endfor %}
+
+</body>
+</html>

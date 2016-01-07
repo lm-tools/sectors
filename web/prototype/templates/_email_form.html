@@ -1,0 +1,25 @@
+{% if messages %}
+  <div id="success" class="error-summary information-box" role="group">
+    {% for message in messages %}
+      <p class="heading-medium error-summary-heading">
+        {{ message }}
+      </p>
+    {% endfor %}
+  </div>
+{% endif %}
+<p class="heading-small email-help">Send this to your email account so you can refer to it later.</p>
+<form action="{{form_action}}#email_form" onsubmit="trackSendReportEmail('{{ namespace }}')" method="post" autocomplete="OFF">
+  {% csrf_token %}
+  <fieldset class="form-fieldset">
+    <div class="form-group {% if form.email.errors %}error{% endif %}">
+      <label class="form-label" for="email">
+        <span class="form-label{% if form.email.errors %}-bold{% endif %}">Email address</span>
+        {% for error in form.email.errors %}
+            <span class="error-message">{{ error|escape }}</span>
+        {% endfor %}
+      </label>
+      {{ form.email }}
+      <input type="submit" class="button" value="Send">
+    </div>
+  </fieldset>
+</form>
