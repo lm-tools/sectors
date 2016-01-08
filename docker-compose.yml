@@ -18,9 +18,10 @@ web:
   links:
     - postgres:postgres
   volumes:
+    - ~/dev/sectors:/usr/src/app
     - /usr/src/app/prototype/static
   env_file: .env
-  command: /usr/local/bin/gunicorn prototype.wsgi:application -w 2 -b :8000
+  command: /usr/local/bin/gunicorn prototype.wsgi:application -w 2 -b :8000 --reload
 
 postgres:
   restart: always
