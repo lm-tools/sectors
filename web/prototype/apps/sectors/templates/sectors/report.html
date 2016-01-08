@@ -64,15 +64,3 @@
     <a href="{% url 'sectors:start' %}" class="link-back">start again</a>
   </footer>
 {% endblock %}
-
-{% block javascript %}
-  {{ block.super }}
-  {% if not debug %}
-    <script src="{% static 'js/analytics/jquery.scrolldepth.min.js' %}"></script>
-    <script>
-      jQuery(function() {
-        jQuery.scrollDepth();
-      });
-    </script>
-  {% endif %}
-{% endblock %}

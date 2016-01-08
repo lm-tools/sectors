@@ -22,7 +22,7 @@ def get_current_namespace(request):
     }
 
 
-def google_analytics(request):
+def google_tag_manager(request):
     return {
-        'google_analytics_id': getattr(settings, 'GOOGLE_ANALYTICS_ID'),
+        'google_tag_manager_id': getattr(settings, 'GOOGLE_TAG_MANAGER_ID'),
     }

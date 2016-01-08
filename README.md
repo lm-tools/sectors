@@ -8,7 +8,7 @@
 
 * DEFAULT_FROM_EMAIL
 * DJANGO_SECRET_KEY
-* GOOGLE_ANALYTICS_ID
+* GOOGLE_TAG_MANAGER_ID
 
 ## Running on Docker containers
 

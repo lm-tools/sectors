@@ -6,7 +6,7 @@
     "DISABLE_COLLECTSTATIC"  :"1",
     "DJANGO_SECRET_KEY"      :{"required":true},
     "DJANGO_SETTINGS_MODULE" :"prototype.settings.heroku",
-    "GOOGLE_ANALYTICS_ID"    :{"required": true},
+    "GOOGLE_TAG_MANAGER_ID"  :{"required": true},
     "HTTPS"                  :"on"
   },
    "addons":[

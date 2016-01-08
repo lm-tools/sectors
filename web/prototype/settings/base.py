@@ -132,7 +132,7 @@ TEMPLATE_CONTEXT_PROCESSORS = [
     "sectors.context_processors.govuk_frontend_settings",
     "sectors.context_processors.get_current_path",
     "sectors.context_processors.get_current_namespace",
-    "sectors.context_processors.google_analytics"
+    "sectors.context_processors.google_tag_manager"
 ]
 
 ROOT_URLCONF = 'prototype.urls'
@@ -209,8 +209,8 @@ LOGGING = {
 # EMAILS
 DEFAULT_FROM_EMAIL = environ.get('DEFAULT_FROM_EMAIL', 'webmaster@localhost')
 
-# GOOGLE ANALYTICS
-GOOGLE_ANALYTICS_ID = environ.get('GOOGLE_ANALYTICS_ID')
+# GOOGLE TAG MANAGER
+GOOGLE_TAG_MANAGER_ID = environ.get('GOOGLE_TAG_MANAGER_ID')
 
 # REPORT POPULATION
 REPORT_POPULATION_TIMEOUT = int(
