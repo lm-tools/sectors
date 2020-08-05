@@ -1,4 +1,6 @@
-# Sectors
+# Sectors - deprecated
+
+*This project is no longer maintained, and was superseded by work-you-could-do*
 
 ## Deploying on Heroku
 
